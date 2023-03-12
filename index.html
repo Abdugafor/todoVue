@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo App</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@200;300;400&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.7.14/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <h1>Список задач</h1>
+        <div v-if="count() === 0">You are awesome!</div>
+        <div v-else-if="count() === 1">One more Step!</div>
+        <div v-else>Осталось сделать задач: <span class="counter">{{ count() }}</span></div>
+        <div class="list" >
+          <div class="item" :class="{done: task.done}" v-for="task in tasks">
+            <input type="checkbox" v-model="task.done">
+            {{task.text}}
+          </div>
+        </div>
+        <div class="form">
+          <input v-model="message">
+          <button type="button" @click="addTask">Добавить</button>
+          <button type="button" @click="deleteAll">Delete All</button>
+        </div>  
+        
+        <img src="https://c8.alamy.com/compfr/f6mn92/date-de-sortie-7-mai-2010-titre-de-la-video-iron-man-2-studio-paramount-pictures-realisateur-jon-favreau-resume-le-milliardaire-tony-stark-doit-composer-avec-des-problemes-mortels-impliquant-le-gouvernement-ses-propres-amis-ainsi-que-de-nouveaux-ennemis-en-raison-de-son-alter-ego-de-super-heros-l-homme-de-fer-sur-la-photo-robert-downey-jr-comme-tony-stark-image-credit-c-paramount-pictures-photos-f6mn92.jpg" width="200" v-show="count() === 0"> 
+      </div>
+
+      <script src="app.js"></script>
+</body>
+</html>
